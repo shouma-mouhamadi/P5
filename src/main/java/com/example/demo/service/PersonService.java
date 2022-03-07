@@ -40,6 +40,11 @@ public class PersonService {
      public ArrayList<String> getPersonsByStationNumbers(ArrayList<String> stations) throws ParseException {
         return personDao.selectPersonsInfoByFirestationAddress(firestationDao.selectFirestationAddressByStationNumbers(stations));
      }
+
+     public ArrayList<String> getPersonsByStationNumber(String station) throws ParseException {
+        return personDao.selectPersonsByFirestationAddress(firestationDao.selectFirestationAddressByStationNumber(station));
+     }
+
      public ArrayList<String> getPersonsByAddress(String address) throws ParseException {
         ArrayList<String> personList;
         ArrayList<String> finalList = new ArrayList<>();
@@ -49,7 +54,6 @@ public class PersonService {
         finalList.add("stationNumber: "+stationNumber);
         finalList.addAll(personList);
         return finalList;
-
      }
 
      public ArrayList<String> getPhonesByAddress(String station) throws ParseException {

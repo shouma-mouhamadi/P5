@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("medicalrecord")
+@RequestMapping("medicalRecord")
 @RestController
 public class MedicalRecordController {
 

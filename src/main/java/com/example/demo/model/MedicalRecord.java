@@ -12,9 +12,9 @@ public class MedicalRecord {
     private final String lastName;
     @NotBlank
     private final String birthdate;
-    @NotBlank
+    //@NotBlank
     private final ArrayList<String> medications;
-    @NotBlank
+    //@NotBlank
     private final ArrayList<String> allergies;
 
     public MedicalRecord(

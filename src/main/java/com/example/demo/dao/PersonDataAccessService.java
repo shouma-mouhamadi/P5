@@ -97,9 +97,7 @@ public class PersonDataAccessService implements PersonDao{
         JSONObject jsonObject;
         ArrayList<String> persons = new ArrayList<>();
         for (String s : address) {
-
             persons.add("stationNumber: " + firestationDataAccessService.selectStationNumberByAddress(s));
-
             for (Object o : jsonArray) {
                 jsonObject = (JSONObject) o;
                 if (jsonObject.get("address").equals(s)) {

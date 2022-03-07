@@ -37,7 +37,8 @@ public class FirestationService {
     }
 
     public ArrayList<String> getPersonsByStationNumber(String station) throws ParseException {
-        return personService.getPersonsByStationNumbers(getFirestationAddress(station));
+        //return personService.getPersonsByStationNumbers(getFirestationAddress(station));
+        return personService.getPersonsByStationNumber(station);
     }
     public String getStationNumberByAddress(String address){
         return firestationDao.selectStationNumberByAddress(address);
