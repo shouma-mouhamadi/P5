@@ -1,5 +1,6 @@
-package com.example.demo.dao;
+package com.example.demo.repository;
 
+import com.example.demo.dao.FirestationDao;
 import com.example.demo.model.Firestation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,14 +14,14 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @Repository("firestationData")
-public class FirestationDataAccessService implements FirestationDao{
+public class FirestationDataAccessService implements FirestationDao {
 
     private static final JSONParser jsonParser = new JSONParser();
     private static JSONArray jsonArray = new JSONArray();
 
     static {
         try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("C:/Users/Shouma/Desktop/SafetyNet-Alerts/src/main/java/com/example/demo/datasource/data.json"));
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("src/main/java/com/example/demo/datasource/data.json"));
             jsonArray = (JSONArray) jsonObject.get("firestations");
         } catch (IOException | ParseException e) {
             e.printStackTrace();

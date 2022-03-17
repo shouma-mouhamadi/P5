@@ -42,14 +42,14 @@ public class PersonService {
      }
 
      public ArrayList<String> getPersonsByStationNumber(String station) throws ParseException {
-        return personDao.selectPersonsByFirestationAddress(firestationDao.selectFirestationAddressByStationNumber(station));
+         return personDao.selectPersonsByOneFirestationAddress(firestationDao.selectFirestationAddressByStationNumber(station).get(0));
      }
 
      public ArrayList<String> getPersonsByAddress(String address) throws ParseException {
         ArrayList<String> personList;
         ArrayList<String> finalList = new ArrayList<>();
         String stationNumber;
-        personList=personDao.selectPersonsByFirestationAddress(address);
+        personList=personDao.selectPersonsByOneFirestationAddress(address);
         stationNumber=firestationDao.selectStationNumberByAddress(address);
         finalList.add("stationNumber: "+stationNumber);
         finalList.addAll(personList);

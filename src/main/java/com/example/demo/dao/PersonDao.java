@@ -19,7 +19,7 @@ public interface PersonDao {
 
     ArrayList<String> selectPersonsInfoByFirestationAddress(ArrayList<String> address) throws ParseException;
 
-    ArrayList<String> selectPersonsByFirestationAddress(String address) throws ParseException;
+    ArrayList<String> selectPersonsByOneFirestationAddress(String address) throws ParseException;
 
     ArrayList<String> selectPhonesByFirestationAddress(ArrayList<String> address) throws ParseException;
 

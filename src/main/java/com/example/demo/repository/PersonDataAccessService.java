@@ -1,5 +1,7 @@
-package com.example.demo.dao;
+package com.example.demo.repository;
 
+
+import com.example.demo.dao.PersonDao;
 import com.example.demo.model.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -8,10 +10,12 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Repository;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 @Repository("personData")
-public class PersonDataAccessService implements PersonDao{
+public class PersonDataAccessService implements PersonDao {
 
     private static final JSONParser jsonParser = new JSONParser();
     private static JSONArray jsonArray = new JSONArray();
@@ -20,7 +24,7 @@ public class PersonDataAccessService implements PersonDao{
 
     static {
         try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("C:/Users/Shouma/Desktop/SafetyNet-Alerts/src/main/java/com/example/demo/datasource/data.json"));
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("src/main/java/com/example/demo/datasource/data.json"));
             jsonArray = (JSONArray) jsonObject.get("persons");
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -111,7 +115,7 @@ public class PersonDataAccessService implements PersonDao{
     }
 
     @Override
-    public ArrayList<String> selectPersonsByFirestationAddress(String address) throws java.text.ParseException {
+    public ArrayList<String> selectPersonsByOneFirestationAddress(String address) throws java.text.ParseException {
         JSONObject jsonObject;
         ArrayList<String> persons = new ArrayList<>();
         for (Object o : jsonArray) {

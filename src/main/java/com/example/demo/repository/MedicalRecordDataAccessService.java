@@ -1,7 +1,7 @@
-package com.example.demo.dao;
+package com.example.demo.repository;
 
+import com.example.demo.dao.MedicalRecordDao;
 import com.example.demo.model.MedicalRecord;
-import com.example.demo.model.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,22 +11,20 @@ import org.springframework.stereotype.Repository;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 @Repository("medicalRecordData")
-public class MedicalRecordDataAccessService implements MedicalRecordDao{
+public class MedicalRecordDataAccessService implements MedicalRecordDao {
 
     private static final JSONParser jsonParser = new JSONParser();
     private static JSONArray jsonArray = new JSONArray();
 
     static {
         try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("C:/Users/Shouma/Desktop/SafetyNet-Alerts/src/main/java/com/example/demo/datasource/data.json"));
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("src/main/java/com/example/demo/datasource/data.json"));
             jsonArray = (JSONArray) jsonObject.get("medicalrecords");
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -110,10 +108,8 @@ public class MedicalRecordDataAccessService implements MedicalRecordDao{
         cal1.setTime(date1);
         //cal2.setTime(date2);
 
-        long diff = cal2.get(Calendar.YEAR) - cal1.get(Calendar.YEAR);
 
-
-        return diff;
+        return cal2.get(Calendar.YEAR) - cal1.get(Calendar.YEAR);
     }
 
     @Override
